@@ -53,6 +53,14 @@ public class MyConfig {
         return appProperties.getProperty("PASSWORDORACLE");
     }
 
+    public String getUsernameSQL(){
+        return appProperties.getProperty("USERNAME");
+    }
+    public String getPasswordSQL(){
+        return appProperties.getProperty("PASSWORD");
+    }
+
+
 /*    public void setPassword(String password){
         appProperties.setProperty("PASSWORD", password);
         save();
@@ -70,6 +78,14 @@ public class MyConfig {
 
     public String getDBPort(){
         return appProperties.getProperty("DB_PORTORACLE");
+    }
+
+    public String getDBHostSQL(){
+        return appProperties.getProperty("DB_HOSTLOCAL");
+    }
+
+    public String getDBPortSQL(){
+        return appProperties.getProperty("DB_PORTSQL");
     }
 
     public String getDBSchema(){

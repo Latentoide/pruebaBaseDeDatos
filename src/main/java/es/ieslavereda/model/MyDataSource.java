@@ -12,26 +12,10 @@ import java.util.Properties;
 
 public class MyDataSource {
     public static DataSource getMyOracleDataSource(){
-        /*MysqlDataSource mysqlDataSource = new MysqlDataSource();
-
-        //jdbc:mysql://<host>:<port>/<schema>
-        String host = MyConfig.getInstance().getDBHost();
-        String port = MyConfig.getInstance().getDBPort();
-        String schema = MyConfig.getInstance().getDBSchema();
-        String user = MyConfig.getInstance().getUsername();
-        String password = MyConfig.getInstance().getPassword();
-
-
-        //jdbc:mysql://<host>:<port>/<schema>
-        mysqlDataSource.setURL("jdbc:mysql://" + host + ":" + port + "/" + schema);
-        mysqlDataSource.setUser(user);
-        mysqlDataSource.setPassword(password);
-
-        return mysqlDataSource;*/
         Properties props = new Properties();
 
         OracleDataSource oracleDS = null;
-        try(FileInputStream fis = new FileInputStream("default.properties");) {
+        try(FileInputStream fis = new FileInputStream("default.properties")) {
             props.load(fis);
 
             String host = MyConfig.getInstance().getDBHost();
@@ -49,5 +33,25 @@ public class MyDataSource {
             e.printStackTrace();
         }
         return oracleDS;
+    }
+
+    public static DataSource getMySQLDataSource(){
+        MysqlDataSource mysqlDataSource = new MysqlDataSource();
+
+        //jdbc:mysql://<host>:<port>/<schema>
+        String host = MyConfig.getInstance().getDBHostSQL();
+        String port = MyConfig.getInstance().getDBPortSQL();
+        String schema = MyConfig.getInstance().getDBSchema();
+        String user = MyConfig.getInstance().getUsernameSQL();
+        String password = MyConfig.getInstance().getPasswordSQL();
+
+
+        //jdbc:mysql://<host>:<port>/<schema>
+        mysqlDataSource.setURL("jdbc:mysql://" + host + ":" + port + "/" + schema);
+        mysqlDataSource.setUser(user);
+        mysqlDataSource.setPassword(password);
+
+
+        return mysqlDataSource;
     }
 }
